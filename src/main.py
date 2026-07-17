@@ -1,6 +1,7 @@
 import cv2
 import time
 from pose_detector import PoseDetector
+from classifier import Classifica
 
 pose_detector = PoseDetector()
 
@@ -14,6 +15,8 @@ while True:
     result = pose_detector.pose_detection(frame, timestamp_ms)
     annotated_image = pose_detector.draw_landmarks(frame, result)
     cv2.imshow('Pose Detection', annotated_image) # mostrar pose
+    classificacao = Classifica(result)
+    print(classificacao)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
