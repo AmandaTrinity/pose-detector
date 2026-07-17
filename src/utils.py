@@ -1,4 +1,4 @@
-# normalmente, não usamos as coordenadas exatas e sim o ângulo das articulações
+# normalmente, não usamos as coordenadas exatas(dist, posicao,altura...) e sim o ângulo das articulações
 import numpy as np
 def angulo_corpo(c1,c2,c3):
 
