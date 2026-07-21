@@ -45,11 +45,20 @@ while True:
 
     if gravar == True:
         if contador < 30:
-            # criar a pasta se nao existir
-            if not os.path.exists('dataset/'+palavra_atual):
-                os.makedirs('dataset/'+palavra_atual)
-            nome_arquivo = 'dataset/'+palavra_atual+'/'+str(time.time())+'.png'
-            cv2.imwrite(nome_arquivo, annotated_image)
+            # para treinar uma IA, o melhor jeito é usar dados reais 
+            if result.pose_landmarks: # tem que ter alguém na câmera
+                linha_dados=[]
+                for ponto in result.pose_landmarks[0]:
+                    linha_dados.append(ponto.x)
+                    linha_dados.append(ponto.y)
+                    linha_dados.append(ponto.z)
+                
+                # adicionar a label
+                linha_dados.append(palavra_atual)
+
+                with open('dataset/dataset.csv', 'a') as f:
+                    f.write(','.join(map(str, linha_dados)) + '\n')
+            
             contador+=1
         else:
             gravar = False
