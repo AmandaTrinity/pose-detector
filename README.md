@@ -51,6 +51,7 @@ Todos os comandos abaixo devem ser executados a partir da **raiz do projeto** (`
    ```bash
    python -m src.main
    ```
+   O sinal reconhecido aparece escrito no próprio vídeo da webcam (e também no console).
 
 5. **Para gravar novos dados (Criação do seu Dataset):**
    ```bash

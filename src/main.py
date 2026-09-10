@@ -14,9 +14,19 @@ while True:
     timestamp_ms = int(time.time() * 1000)
     result = pose_detector.pose_detection(frame, timestamp_ms)
     annotated_image = pose_detector.draw_landmarks(frame, result)
-    cv2.imshow('Pose Detection', annotated_image) # mostrar pose
+
     classificacao = Classifica(result)
     print(classificacao)
+
+    # escreve o sinal reconhecido direto no vídeo (com fundo pra ficar legível)
+    (largura_texto, altura_texto), _ = cv2.getTextSize(classificacao, cv2.FONT_HERSHEY_SIMPLEX, 1.2, 3)
+    cv2.rectangle(annotated_image, (5, 10), (15 + largura_texto, 25 + altura_texto), (0, 0, 0), -1)
+    cv2.putText(
+        annotated_image, classificacao, (10, 20 + altura_texto),
+        cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 255, 0), 3, cv2.LINE_AA
+    )
+
+    cv2.imshow('Pose Detection', annotated_image) # mostrar pose
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
