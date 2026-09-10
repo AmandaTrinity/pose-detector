@@ -1,4 +1,4 @@
-from utils import angulo_corpo
+from .utils import angulo_corpo
 
 def Classifica(detection_result):
     pose_landmarks = detection_result.pose_landmarks #pegamos a lista

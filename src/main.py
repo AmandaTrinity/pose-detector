@@ -1,7 +1,7 @@
 import cv2
 import time
-from pose_detector import PoseDetector
-from classifier import Classifica
+from src.pose_detector import PoseDetector
+from src.classifier import Classifica
 
 pose_detector = PoseDetector()
 
