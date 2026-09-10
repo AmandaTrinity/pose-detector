@@ -10,6 +10,7 @@ cap = cv2.VideoCapture(0) # ligar webcam
 gravar = False
 contador=0
 palavra_atual=''
+sessao_id=''
 
 # se apertar 'a' é a palavra 'oi' agora
 # se apertar 'b' é a palavra 'obrigado' agora
@@ -30,16 +31,19 @@ while True:
         contador=0
         gravar = True
         palavra_atual = 'oi'
+        sessao_id = f'{palavra_atual}_{int(time.time())}'
 
     if tecla == ord('b'):
         contador=0
         gravar = True
         palavra_atual = 'obrigado'
+        sessao_id = f'{palavra_atual}_{int(time.time())}'
 
     if tecla == ord('c'):
         contador=0
         gravar = True
         palavra_atual = 'eu te amo'
+        sessao_id = f'{palavra_atual}_{int(time.time())}'
     if tecla == ord('q'):
         break
 
@@ -53,7 +57,9 @@ while True:
                     linha_dados.append(ponto.y)
                     linha_dados.append(ponto.z)
                 
-                # adicionar a label
+                # adicionar id da sessão de gravação (pra dar pra agrupar train/test sem vazar dado)
+                # e a label
+                linha_dados.append(sessao_id)
                 linha_dados.append(palavra_atual)
 
                 with open('dataset/dataset.csv', 'a') as f:
