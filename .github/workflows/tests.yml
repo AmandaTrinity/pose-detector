@@ -24,5 +24,8 @@ jobs:
       - name: Train classifier
         run: python -m training.train_classifier
 
+      - name: Train alphabet classifier
+        run: python -m training.train_alphabet_classifier
+
       - name: Run tests
         run: pytest -v
