@@ -2,6 +2,8 @@ __pycache__/
 *.pyc
 .pytest_cache/
 dataset/raw_videos/
+dataset/raw_alphabet/
 models/pose_classifier.joblib
+models/alphabet_classifier.joblib
 reports/
 
